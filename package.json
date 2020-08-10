@@ -1,0 +1,23 @@
+{
+  "name": "recursive-read-directory",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MidSpike/recursive-read-directory.git"
+  },
+  "author": "Tyler Resch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MidSpike/recursive-read-directory/issues"
+  },
+  "homepage": "https://github.com/MidSpike/recursive-read-directory#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
