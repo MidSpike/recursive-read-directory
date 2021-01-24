@@ -18,7 +18,7 @@ process.cwd()
 │        test.js
 │
 └───node_modules
-        etc...
+         etc...
 ```
 
 The following code snippet:
