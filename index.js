@@ -1,30 +1,36 @@
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 
 /**
- * Recursively goes through a folder to find files
- * @param {String} root_directory_path 
- * @returns {Array<String>} relative file paths inside of the `root_directory_path`
+ * recursively goes through a directory to find files
+ * @param {String} directory_path 
+ * @returns {Array<String>} relative file paths inside of the `directory_path`
  */
-function recursiveReadDirectory(root_directory_path) {
-    // Don't expose internal function parameters
-    function _recursiveReadDirectory(root_directory_path, file_filter=((item) => item[0] !== '.'), found_files=[], recursive_path='') {
-        const directory_item_path = path.join(root_directory_path, recursive_path);
-        if (fs.existsSync(directory_item_path)) {
-            if (fs.statSync(directory_item_path).isDirectory()) {
-                const directory_items = fs.readdirSync(directory_item_path);
-                const filtered_directory_items = directory_items.filter((item, index) => file_filter(item, index, directory_item_path));
-                for (const filtered_directory_item of filtered_directory_items) {
-                    const child_directory_item_path = path.join(recursive_path, filtered_directory_item);
-                    _recursiveReadDirectory(root_directory_path, file_filter, found_files, child_directory_item_path);
+module.exports = (directory_path) => {
+    const found_files = [];
+
+    function recursiveReadDirectory(recursive_directory_path) {
+        console.log('test 1', { recursive_directory_path });
+
+        if (fs.existsSync(recursive_directory_path)) {
+            console.log('test 2 A');
+            if (fs.statSync(recursive_directory_path).isDirectory()) {
+                console.log('test 3 A');
+                for (const filtered_directory_item of fs.readdirSync(recursive_directory_path).filter(item => item[0] !== '.')) {
+                    console.log('test 4', { filtered_directory_item });
+                    recursiveReadDirectory(path.join(recursive_directory_path, filtered_directory_item));
                 }
             } else {
-                found_files.push(recursive_path);
+                console.log('test 3 B', { recursive_directory_path });
+                found_files.push(recursive_directory_path);
             }
         }
+
+        console.log('test 2 B');
         return found_files;
     }
-    return _recursiveReadDirectory(root_directory_path);
-}
 
-module.exports = recursiveReadDirectory;
+    return recursiveReadDirectory(directory_path);
+};
