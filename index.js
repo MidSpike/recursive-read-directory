@@ -17,7 +17,7 @@ const item_filter_default = (directory_item) => !['node_modules', '.git', '.giti
  * 
  * @example
  * ```js
- * const item_filter = (directory_item) => !['node_modules', '.git', '.gitignore', '.env'].includes(directory_item)
+ * const item_filter = (directory_item) => !['node_modules', '.git', '.gitignore', '.env'].includes(directory_item);
  * recursiveReadDirectory(process.cwd(), item_filter);
  * ```
  */
