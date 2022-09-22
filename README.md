@@ -10,28 +10,47 @@ npm i github:MidSpike/recursive-read-directory
 Take a look at the example directory.
 ```
 process.cwd()
-│   .env
-│   index.js
+│   .gitignore
+│   package-lock.json
+│   package.json
 │   README.md
+│   tsconfig.json
 │
-├───tests
-│        test.js
+├───.vscode
+│        settings.json
 │
-└───node_modules
-         etc...
+├───dist
+│        index.d.ts
+│        index.js
+│        index.js.map
+│
+├───node_modules
+│        ...
+│
+├───src
+│        index.ts
+│
+└───tests
+         test.js
 ```
 
 The following code snippet:
-```js
-const recursiveReadDirectory = require('recursive-read-directory');
-const item_filter = (directory_item) => !['node_modules', '.env'].includes(directory_item);
-console.log(recursiveReadDirectory(process.cwd(), item_filter));
+```ts
+import recursiveReadDirectory from 'recursive-read-directory';
+
+console.log(
+    recursiveReadDirectory('./dist')
+);
 ```
 will output:
-```js
+```ts
 [
+    'index.d.ts',
     'index.js',
-    'README.md',
-    'tests\\test.js'
+    'index.js.map',
 ]
 ```
+
+## Information
+
+Relative paths are returned using unix-style path separators `/` instead of windows-style `\`.

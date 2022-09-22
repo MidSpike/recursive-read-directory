@@ -20,4 +20,6 @@
 # node stuff
 node_modules
 npm
-package-lock.json
+
+# runtime typescript
+/dist

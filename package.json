@@ -1,23 +1,30 @@
 {
   "name": "recursive-read-directory",
-  "version": "0.2.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.3.0",
+  "description": "Recursively reads a directory then returns an array of files with relative paths.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "node ./tests/test.js --trace-warnings"
+    "test": "node --trace-warnings ./dist/tests/test.js",
+    "build": "npx tsc --build",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MidSpike/recursive-read-directory.git"
   },
-  "author": "Tyler Resch",
+  "author": "MidSpike",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MidSpike/recursive-read-directory/issues"
   },
   "homepage": "https://github.com/MidSpike/recursive-read-directory#readme",
-  "dependencies": {
-    "fs": "0.0.1-security",
-    "path": "^0.12.7"
-  }
+  "devDependencies": {
+    "@types/node": "18.7.18",
+    "typescript": "4.8.3"
+  },
+  "files": [
+    "dist/"
+  ]
 }
