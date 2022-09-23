@@ -1,6 +1,6 @@
 {
   "name": "recursive-read-directory",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Recursively reads a directory then returns an array of files with relative paths.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

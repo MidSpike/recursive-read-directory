@@ -9,11 +9,15 @@ import recursiveReadDirectory = require('../index');
 //------------------------------------------------------------//
 
 const expected_file_paths = [
+    'nested/deep/test',
+    'nested/deep/test.file',
     'nested/test',
     'nested/test.file',
     'test',
     'test.file',
 ];
+
+console.log('[Info] expected_file_paths:', expected_file_paths);
 
 //------------------------------------------------------------//
 
